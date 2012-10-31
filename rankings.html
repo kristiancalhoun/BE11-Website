@@ -88,8 +88,10 @@
 					this.losses = 0;
 					this.ties = 0;
 					this.played = 0;
+					this.matchRecords = [];
 				};
 				var teams = [];
+				var matchesPerTeam = 5;
 				
 				/**
 				 * Return the Team with the specified number from the list.
@@ -114,6 +116,7 @@
 						success: function( matchResults ) {
 							// First get all the team data
 							for (var i = 0; i < matchResults.length; i++) {
+								// Do stuff for sorting rankings
 								if (matchResults[i].type === 'Q') {
 									var j;
 									var team;
@@ -132,6 +135,7 @@
 									var redTeams = matchResults[i].red;
 									for (j = 0; j < redTeams.length; j++) {
 										team = getTeam(redTeams[j]);
+										team.matchRecords.push(matchResults[i]);
 										team.QS += redQS + matchResults[i].CP;
 										team.HP += matchResults[i].redHybrid;
 										team.BP += matchResults[i].redBridge;
@@ -150,6 +154,7 @@
 									var blueTeams = matchResults[i].blue;
 									for (j = 0; j < blueTeams.length; j++) {
 										team = getTeam(blueTeams[j]);
+										team.matchRecords.push(matchResults[i]);
 										team.QS += blueQS + matchResults[i].CP;
 										team.HP += matchResults[i].blueHybrid;
 										team.BP += matchResults[i].blueBridge;
@@ -164,29 +169,67 @@
 										}
 										team.played++;
 									}
+								} else if(matchResults[i].type === 'E') {
+									var redTeams = matchResults[i].red;
+									for (j = 0; j < redTeams.length; j++) {
+										team = getTeam(redTeams[j]);
+										team.matchRecords.push(matchResults[i]);
+									}
+									
+									var blueTeams = matchResults[i].blue;
+									for (j = 0; j < blueTeams.length; j++) {
+										team = getTeam(blueTeams[j]);
+										team.matchRecords.push(matchResults[i]);
+									}
+								}
+							}
+							
+							// Remove surrogate matches
+							for (var i = 0; i < teams.length; i++) {
+								if (teams[i].played > matchesPerTeam) {
+									var surrogateMatch = teams[i].matchRecords[2];
+									teams[i].CP -= surrogateMatch.CP;
+									
+									if (surrogateMatch.redFinal > surrogateMatch.blueFinal) {
+										redQS = 2;
+										blueQS = 0;
+									} else if (surrogateMatch.redFinal < surrogateMatch.blueFinal) {
+										redQS = 0;
+										blueQS = 2;
+									} else {
+										redQS = 1;
+										blueQS = 1;
+									}
+									
+									if (surrogateMatch.red.indexOf(teams[i].number) !== -1) {
+										// the team was red
+										teams[i].QS -= (redQS + surrogateMatch.CP);
+										teams[i].HP -= surrogateMatch.redHybrid;
+										teams[i].TP -= surrogateMatch.redTeleop;
+										teams[i].BP -= surrogateMatch.redBridge;
+									} else {
+										teams[i].QS -= (blueQS + surrogateMatch.CP);
+										teams[i].HP -= surrogateMatch.blueHybrid;
+										teams[i].TP -= surrogateMatch.blueTeleop;
+										teams[i].BP -= surrogateMatch.blueBridge;
+									}
 								}
 							}
 							
 							// Then sort
-							// 4th order by Teleop points
 							teams.sort(function(a, b) {
-								return a.TP - b.TP;
+								if (a.QS === b.QS && a.HP === b.HP && a.BP === b.BP) {
+									return a.TP - b.TP;
+								} else if (a.QS === b.QS && a.HP === b.HP) {
+									return a.BP - b.BP;
+								} else if (a.QS === b.QS) { 
+									return a.HP - b.HP;
+								} else {
+									return a.QS - b.QS;
+								}
+								return 0;
 							});
-							
-							// 3rd order by Bridge points
-							teams.sort(function(a, b) {
-								return a.BP - b.BP;
-							});
-							
-							// 2nd order by Hybrid points
-							teams.sort(function(a, b) {
-								return a.HP - b.HP;
-							});
-							
-							// 1st order by Qualification Score
-							teams.sort(function(a, b) {
-								return a.QS - b.QS;
-							});
+
 							
 							teams.reverse();
 							

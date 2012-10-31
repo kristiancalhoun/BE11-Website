@@ -63,6 +63,7 @@ require(
 				this.matchRecords = [];
 			};
 			var teams = [];
+			var matchesPerTeam = 5;
 			
 			/**
 			 * Return the Team with the specified number from the list.
@@ -170,6 +171,38 @@ require(
 								for (j = 0; j < blueTeams.length; j++) {
 									team = getTeam(blueTeams[j]);
 									team.matchRecords.push(matchResults[i]);
+								}
+							}
+						}
+						
+						// Remove surrogate matches
+						for (var i = 0; i < teams.length; i++) {
+							if (teams[i].played > matchesPerTeam) {
+								var surrogateMatch = teams[i].matchRecords[2];
+								teams[i].CP -= surrogateMatch.CP;
+								
+								if (surrogateMatch.redFinal > surrogateMatch.blueFinal) {
+									redQS = 2;
+									blueQS = 0;
+								} else if (surrogateMatch.redFinal < surrogateMatch.blueFinal) {
+									redQS = 0;
+									blueQS = 2;
+								} else {
+									redQS = 1;
+									blueQS = 1;
+								}
+								
+								if (surrogateMatch.red.indexOf(teams[i].number) !== -1) {
+									// the team was red
+									teams[i].QS -= (redQS + surrogateMatch.CP);
+									teams[i].HP -= surrogateMatch.redHybrid;
+									teams[i].TP -= surrogateMatch.redTeleop;
+									teams[i].BP -= surrogateMatch.redBridge;
+								} else {
+									teams[i].QS -= (blueQS + surrogateMatch.CP);
+									teams[i].HP -= surrogateMatch.blueHybrid;
+									teams[i].TP -= surrogateMatch.blueTeleop;
+									teams[i].BP -= surrogateMatch.blueBridge;
 								}
 							}
 						}
@@ -361,6 +394,38 @@ require(
 								for (j = 0; j < blueTeams.length; j++) {
 									team = getTeam(blueTeams[j]);
 									team.matchRecords.push(matchResults[i]);
+								}
+							}
+						}
+						
+						// Remove surrogate matches
+						for (var i = 0; i < teams.length; i++) {
+							if (teams[i].played > matchesPerTeam) {
+								var surrogateMatch = teams[i].matchRecords[2];
+								teams[i].CP -= surrogateMatch.CP;
+								
+								if (surrogateMatch.redFinal > surrogateMatch.blueFinal) {
+									redQS = 2;
+									blueQS = 0;
+								} else if (surrogateMatch.redFinal < surrogateMatch.blueFinal) {
+									redQS = 0;
+									blueQS = 2;
+								} else {
+									redQS = 1;
+									blueQS = 1;
+								}
+								
+								if (surrogateMatch.red.indexOf(teams[i].number) !== -1) {
+									// the team was red
+									teams[i].QS -= (redQS + surrogateMatch.CP);
+									teams[i].HP -= surrogateMatch.redHybrid;
+									teams[i].TP -= surrogateMatch.redTeleop;
+									teams[i].BP -= surrogateMatch.redBridge;
+								} else {
+									teams[i].QS -= (blueQS + surrogateMatch.CP);
+									teams[i].HP -= surrogateMatch.blueHybrid;
+									teams[i].TP -= surrogateMatch.blueTeleop;
+									teams[i].BP -= surrogateMatch.blueBridge;
 								}
 							}
 						}
