@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<!-- InstanceBeginEditable name="doctitle" -->
+	<title>FMS - Brunswick Eruption</title>
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="buttons/buttons.css" rel="stylesheet" type="text/css"/>
+	<script src="jquery1.6.2.js" type="text/javascript"></script>	
+
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-6958956-2']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+	
+	<script type="text/javascript">
+		$("document").ready( function() {						  
+			$("#tweetScoreForm").submit( function() {
+				// TODO: Error checking
+				
+				var TY = $("#TY").val();
+				var MC = $("#MC").val();
+				
+				var RHS = $("#RHS").val();
+				var BHS = $("#BHS").val();
+				
+				var RTS = $("#RTS").val();
+				var BTS = $("#BTS").val();
+				
+				var RB = $("#RB").val();
+				var BB = $("#BB").val();
+				
+				var RFP = $("#RFP").val();
+				var BFP = $("#BFP").val();
+				
+				var CP = $("#CP").val();
+				
+				var RF = parseInt(RHS) + parseInt(RTS) + parseInt(RB) + parseInt(RFP); 
+				var BF = parseInt(BHS) + parseInt(BTS) + parseInt(BB) + parseInt(BFP);
+				
+				var r1 = $("#red1").val();
+				var r2 = $("#red2").val();
+				var r3 = $("#red3").val();
+				
+				var b1 = $("#blue1").val();
+				var b2 = $("#blue2").val();
+				var b3 = $("#blue3").val();
+				
+				var tweetText = '#FRCBE TY ' + TY + ' MC ' + MC + ' ';
+				tweetText += 'RF ' + RF + ' BF ' + BF + ' ';
+				tweetText += 'RA ' + r1 + ' ' + r2 + ' ' + r3 + ' ';
+				tweetText += 'BA ' + b1 + ' ' + b2 + ' ' + b3 + ' ';
+				tweetText += 'RB ' + RB + ' ';
+				tweetText += 'BB ' + BB + ' ';
+				tweetText += 'RFP ' + RFP + ' ';
+				tweetText += 'BFP ' + BFP + ' ';
+				tweetText += 'RHS ' + RHS + ' ';
+				tweetText += 'BHS ' + BHS + ' ';
+				tweetText += 'RTS ' + RTS + ' ';
+				tweetText += 'BTS ' + BTS + ' ';
+				tweetText += 'CP ' + CP;
+											
+				$.ajax( {
+					url: "post_tweet.php",
+					type: "POST",
+					data: "tweetText=" + tweetText,
+					success: function( msg ) {
+						console.log('Tweeted and received result status: ' + msg);
+						$("#ajaxresult").html( msg );
+						$("#ajaxresult").show();
+					}	
+				});
+				
+				if (TY === 'Q' || TY === 'E') {
+					// Write the match record to a file
+					$.ajax( {
+						url: "writeMatchRecord.php",
+						type: "POST",
+						data: 'MC=' + MC + '&TY=' + TY +'&RF=' + RF + '&BF=' + BF + '&R1=' + r1 + '&R2=' + r2 + '&R3=' + r3 + '&B1=' + b1 + '&B2=' + b2 + '&B3=' + b3 + '&RB=' + RB + '&BB=' + BB + '&RFP=' + RFP + '&BFP=' + BFP + '&RHS=' + RHS + '&BHS=' + BHS + '&RTS=' + RTS + '&BTS=' + BTS + '&CP=' + CP,
+						success: function( msg ) {
+							console.log(msg);
+							console.log('Successfully wrote match record to file.');
+						}	
+					});
+				}
+				
+				return false;
+			});		
+		});
+	</script>
+</head>
+<body>
+	<!-- Facebook and Twitter scripts -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<!-- End Facebook and Twitter scripts -->
+	
+	<div id="headerBackground">
+		<div id="header">
+			<img  id="headerImage" src="./images/header.png" alt="" onDragStart="return false;"/>
+		</div>
+	</div>
+	
+		<div class="mainContent">
+			<br/>
+			<form id="tweetScoreForm">
+				<div class="row centered">Match Type:
+					<select id="TY">
+					  <option value="Q">Q</option>
+					  <option value="E">E</option>
+					  <option value="P">P</option>
+					</select> 
+				<br/></div>
+				<div class="row centered">Match Number: <input id="MC" type="text"/> <br/></div>
+				<div id="blueScoreInfo">
+					<div class="row">Team 1: <input id="blue1" type="text"/> <br/></div>
+					<div class="row">Team 2: <input id="blue2" type="text"/> <br/></div>
+					<div class="row">Team 3: <input id="blue3" type="text"/> <br/></div>
+					<br/>
+					<div class="row">Hybrid: <input id="BHS" type="text"/> <br/></div>
+					<div class="row">Teleoperated:  <input id="BTS" type="text"/> <br/></div>
+					<div class="row">Bridge Points: <input id="BB" type="text"/> <br/></div>
+					<div class="row">Foul Points: <input id="BFP" type="text"/> <br/></div>
+				</div>
+				<div id="redScoreInfo">
+					<div class="row">Team 1: <input id="red1" type="text"/> <br/></div>
+					<div class="row">Team 2: <input id="red2" type="text"/> <br/></div>
+					<div class="row">Team 3: <input id="red3" type="text"/> <br/></div>
+					<br/>
+					<div class="row">Hybrid: <input id="RHS" type="text"/> <br/></div>
+					<div class="row">Teleoperated:  <input id="RTS" type="text"/> <br/></div>
+					<div class="row">Bridge Points: <input id="RB" type="text"/> <br/></div>
+					<div class="row">Foul Points: <input id="RFP" type="text"/> <br/></div>
+				</div>
+				<div class="row centered">Coopertition Points: 
+				<select id="CP">
+				  <option value="0">0</option>
+				  <option value="2">2</option>
+				  <option value="1">1</option>
+				</select><br/></div>
+				<input type="submit" value="Submit Score" class="button blue big" id="submitTweet"/>
+			</form>
+			
+			<div id="ajaxresult" style="display: none">
+			</div>
+			
+		</div>
+		<img id="floral" src="./images/flower.png" alt=""/>
+		<div id="social">
+		<div class="fb-like" data-href="http://www.facebook.com/BrunswickEruption" data-send="false" data-layout="box_count" data-width="50" data-show-faces="false" data-font="lucida grande"></div>
+			<a href="https://twitter.com/BrunsEruption" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @BrunsEruption</a>
+		</div>
+		
+		<div id="footer">
+			<div id="footerContent">
+			<a href="http://www.usfirst.org" target="_blank"> <img id="FIRSTlogo" src="images/FIRST_vert.gif" alt=""/></a>
+			<a href="http://www.raiderrobotix.org" target="_blank"> <img id="RaiderRobotixLogo" src="images/Team25Logo.png" alt=""/></a>
+			</div>
+			<div id="copyright">
+				Copyright Raider Robotix / Brunswick Eruption 2012
+			</div>
+		</div>
+</body>
+</html>

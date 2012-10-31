@@ -1,0 +1,732 @@
+@font-face {
+	font-family: velvendc;
+	src: url('./velvendc.ttf');
+}
+
+body {
+	min-width: 980px;
+	margin: 0px;
+}
+
+.pageTitle {
+	font-family: velvendc;
+	src: url('./velvendc.ttf');
+	font-size: 64px;
+	color: #ffffff;
+	float:left;
+	padding-top:20px;
+}
+
+#headerBackground {
+	background: #afd9c5;
+	background: -moz-linear-gradient(top,  #afd9c5 0%, #1ca2ab 75%, #199098 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#afd9c5), color-stop(75%,#1ca2ab), color-stop(100%,#199098));
+	background: -webkit-linear-gradient(top,  #afd9c5 0%,#1ca2ab 75%,#199098 100%);
+	background: -o-linear-gradient(top,  #afd9c5 0%,#1ca2ab 75%,#199098 100%);
+	background: -ms-linear-gradient(top,  #afd9c5 0%,#1ca2ab 75%,#199098 100%);
+	background: linear-gradient(to bottom,  #afd9c5 0%,#1ca2ab 75%,#199098 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#afd9c5', endColorstr='#199098',GradientType=0 );
+	width:100%;
+	height: 100%
+}
+
+#header {
+	width: 560px;
+	height: 120px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#navigation {
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	background: #77ffff;
+}
+
+/* our menu styles */
+#sticky_navigation_wrapper { 
+	width:100%; 
+	height:40px; 
+	background: #189199;
+	z-index: 100;
+	margin: 0 auto;
+}
+#sticky_navigation { 
+	margin: 0 auto;
+	width: 960px;
+	height: 40px;
+}
+#sticky_navigation ul { 
+	list-style:none; 
+	margin:0 auto; 
+	padding: 5px; 
+}
+#sticky_navigation ul li { 
+	margin:0; 
+	padding:0; 
+	display:inline; 
+}
+#sticky_navigation ul li a { 
+	display:block; 
+	float:left; 
+	margin:0 0 0 5px; 
+	padding:0 14px; 
+	height:30px; 
+	line-height:30px; 
+	font-size:14px; 
+	font-family:Arial, serif; 
+
+	color:#fff; 
+	background:#41c1cd; /*cell color*/
+	-moz-border-radius:3px; 
+	-webkit-border-radius:3px; 
+	border-radius:3px; 
+	text-decoration: none;
+}
+#sticky_navigation ul li a:hover, #sticky_navigation ul li a.selected { 
+	color:#fff; 
+	background:#FF9147; 
+	-webkit-box-shadow:0 0 5px #f0ff00; 
+	-moz-box-shadow: 0 0 5px #f0ff00; 
+	box-shadow: 0 0 5px #f0ff00; 
+}
+
+.slider-wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	height: 300px;
+	width: 700px;
+	-webkit-box-shadow:0 0 25px #41c1cd; 
+	-moz-box-shadow: 0 0 25px #41c1cd; 
+	box-shadow: 0 0 25px #41c1cd; 
+}
+
+#floral {
+	position: absolute;
+	left: 25px;
+	top: 175px;;
+	height: 400px;
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	z-index: -1;
+}
+
+#buttons {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	margin-bottom: 40px;
+	height: 50px;
+	width: 500px;
+}
+
+#footer {
+	z-index: 50;
+	width: 100%;
+	background-color: #199098;
+}
+
+#footerContent {
+	width: 270px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#FIRSTlogo {
+	height: 100px;
+	margin: 10px;
+}
+
+#RaiderRobotixLogo {
+	height: 100px;
+	margin: 10px;
+}
+
+#copyright {
+	text-align: center;
+	font-size: 12px;
+	color: #ffffff;
+	font-family: arial;
+	padding-bottom: 10px;
+}
+
+#social {
+    /*float: right;*/
+    position: absolute;
+    top: 200px;
+    right: 20px;
+	width: 50px;
+	height: 100px;
+	padding: 20px;
+}
+
+.fb-like {
+	padding-left: 15px;
+	margin-bottom: 10px;
+}
+
+.mainContent {
+	font: 15px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	background: rgba(255, 255, 255, 0.75);
+	width: 700px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	min-height: 400px;
+	padding-bottom: 40px;
+}
+
+#webcastContent {
+	position: relative;
+	margin: 0 auto;
+	width: 870px;
+}
+
+.mainContent a {
+	text-decoration: none;
+	color: #199098;
+}
+
+h3 {
+	font-family: arial;
+}
+
+h4 {
+	font-family: helvetica;
+	color: #199098;
+}
+
+.centered {
+	margin-left: auto;
+	margin-right: auto;	
+	text-align: center;
+}
+
+#alohaAwardLogo {
+	display:block;
+}
+
+#projectEmpowerLogo {
+	width: 700px;
+}
+
+b {
+	font-family: Verdana, Geneva, sans-serif;
+	padding-right: 5px;
+}
+
+#map {
+	margin: 10px;
+	float: right;
+}
+
+#localNav {
+	float: left;
+	margin-left: 100px;
+}
+
+.localInfo {
+	margin-left: 100px;
+}
+
+#teamList {
+	padding-left: 240px;
+}
+
+#registeredTeamList {
+    list-style-type: none;
+    margin-left: -10px;
+}
+
+#schedule {
+    padding-left: 200px;
+}
+
+.menu ul{
+    margin: 0; 
+    padding: 0;
+    float: left;
+}
+ 
+.menu ul li{
+    display: inline;
+}
+ 
+.menu ul li a{
+    float: left; 
+    text-decoration: none;
+    padding: 10.5px 11px;
+}
+
+#quickLinks {
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
+
+/* Styling for the Twitter score page */
+#redScoreInfo {
+width: 300px;
+height: 250px;
+display: inline-block;
+vertical-align: top;
+background: #FF0000;
+color: #FFFFFF;
+padding: 20px;
+position:relative;
+}
+
+#blueScoreInfo {
+width: 300px;
+height: 250px;
+margin-left: 10px;
+display: inline-block;
+vertical-align: top;
+background: #0000FF;
+color: #FFFFFF;
+padding: 20px;
+position: relative;
+}
+
+#blueScoreInfo input, #redScoreInfo input {
+	position: absolute;
+	right: 40px;
+}
+
+.row {
+margin: 5px 0;
+}
+
+#submitTweet {
+margin: 10px auto 0 auto;
+text-align: center;
+display: block;
+}
+
+.no-decoration, .no-decoration:hover {
+	text-decoration: none;
+}
+
+/*  Styling for match results table */
+#qualificationResultsTable td, #eliminationResultsTable td, #rankingsTable td {
+	text-align: center;
+}
+
+.redTeam {
+	background: #FFEEEE !important;
+}
+
+.redScore {
+	background: #FFDDDD !important;
+}
+
+.redWinner {
+	background: #FFDDDD !important;
+	font-weight: bold;
+}
+
+.blueTeam {
+	background: #EEEEFF !important;
+}
+
+.blueScore {
+	background: #DDDDFF !important;
+}
+
+.blueWinner {
+	background: #DDDDFF !important;
+	font-weight: bold;
+}
+
+/* From here down is CSS for the MailChimp form. */
+#signup textarea {
+    font: 12px/18px 'Helvetica',Arial,sans-serif;
+}
+#signuph2 {
+    font-size: 22px;
+    line-height: 28px;
+    margin: 0 0 10px;
+}
+#signuph3 {
+    margin: 0 0 5px;
+    padding: 0;
+}
+#signup .headerBar {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    padding: 0;
+}
+#signup .wrapper {
+    margin: 0 auto 10px;
+    text-align: left;
+    width: 600px;
+}
+#signup .container {
+    border-color: transparent !important;
+    border-width: 0 !important;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    position: relative;
+    text-align: left;
+}
+#signup .tpl-image-content {
+    padding-left: 20px;
+}
+#signup fieldset {
+    background-color: #DDDDDD;
+    border: 1px solid #CCCCCC;
+    padding: 10px;
+}
+#signup label {
+    clear: both;
+    display: block;
+    float: none;
+    font-weight: bold;
+    margin-top: 8px;
+    position: relative;
+    text-align: left;
+    width: auto;
+}
+#signup .field-group {
+    background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25)) repeat scroll 0 0 transparent;
+    border-style: solid;
+    float: none;
+    margin: 3px 0 15px;
+    padding: 5px;
+}
+#signup .field-group input {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    display: block;
+    margin: 0;
+    padding: 5px;
+    width: 98%;
+}
+#signup .radiogroup input, .phonearea input, .addressfield input, .datefield input, .groups input {
+    width: auto;
+}
+#signup .field-group label {
+    clear: none;
+}
+#signup .field-group textarea {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    height: 150px;
+    margin: 0;
+    overflow: auto;
+    width: 525px;
+}
+#signup .field-help {
+    border-radius: 0 0 0 0;
+    clear: both;
+    display: none;
+    float: none;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+    margin: 5px -5px -5px;
+    padding: 8px 10px;
+    position: static;
+    width: auto;
+}
+#signup .field-help .help {
+    min-height: 16px;
+    text-decoration: none;
+}
+#signup .field-group .feedback br {
+    display: none;
+}
+#signup .field-group .feedback div {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+#signup .addressfield .subfield {
+    clear: left;
+}
+#signup .indicates-required {
+    text-align: right;
+}
+#signup .indicates-required span {
+    font-size: 150%;
+    font-weight: bold;
+}
+#signup label .asterisk {
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+    top: 36px;
+}
+#signup .error, .errorText {
+    margin: 5px 0 0;
+    padding: 5px 10px;
+}
+#signup .formstatus {
+    margin-bottom: 10px;
+}
+#signup .alert {
+    background: none repeat scroll 0 0 #E4F3D4;
+    border: 2px solid #5CA000;
+    color: #5CA000;
+    font-size: 14px;
+    margin: 10px 0;
+    padding: 10px;
+}
+#signup .alert a {
+    color: #5CA000;
+    text-decoration: underline;
+}
+#signup .datefield, .phonefield-us {
+    padding: 5px;
+}
+#signup .datefield input, .phonefield-us input {
+    display: inline;
+    letter-spacing: 1px;
+    margin: 0 2px;
+    padding: 5px 0 2px;
+    text-align: center;
+    width: 60px;
+}
+#signup .datefield .small-meta {
+    font-size: 11px;
+}
+#signup .phonefield-us .phonearea input, .phonefield-us .phonedetail1 input {
+    width: 40px;
+}
+#signup .datefield .monthfield input, .datefield .dayfield input {
+    width: 30px;
+}
+#signup .datefield label, .phonefield-us label {
+    display: none;
+}
+#signup ul.interestgroup_field {
+    display: block;
+    margin: 0;
+    padding: 5px;
+}
+#signup ul.interestgroup_field li, .interestgroup_row {
+    display: block;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+#signup ul.interestgroup_field input {
+    display: inline !important;
+    width: auto !important;
+}
+#signup ul.interestgroup_field label {
+    display: inline;
+    font-weight: normal;
+    padding: 0 30px 0 3px;
+}
+#signup select {
+    margin: 5px;
+    width: 300px;
+}
+#signup ul.unsub-options {
+    display: block;
+}
+#signup ul.unsub-options li {
+    display: block;
+    padding-bottom: 5px;
+}
+#signup ul.unsub-options li label {
+    display: inline;
+    padding-left: 5px;
+}
+#signup ul.unsub-options li textarea {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    display: block;
+    height: 100px;
+    margin: 5px 0;
+    padding: 5px;
+    width: 350px;
+}
+#signup .addressfield span {
+    display: block;
+    height: 34px;
+}
+#signup .addressfield input {
+    float: right;
+    margin: 0 9% 0 0;
+    padding: 8px 0 2px;
+    width: 56%;
+}
+#signup .addressfield label {
+    float: left;
+    font-weight: normal;
+    text-align: right;
+    width: 33%;
+}
+#signup .addressfield .countryfield {
+    display: block;
+    height: 45px;
+    position: relative;
+}
+#signup .addressfield .countryfield select {
+    left: 35%;
+    margin: 0;
+    position: absolute;
+    top: 10px;
+}
+#signup .captcha {
+    float: left;
+    height: 170px;
+    width: 340px;
+}
+#signup #archive-list {
+    border-top: 1px solid #EEEEEE;
+    display: block;
+    margin: 15px 0;
+    padding: 0;
+}
+#signup #archive-list li {
+    border-bottom: 1px solid #EEEEEE;
+    display: block;
+    list-style: none outside none;
+    margin: 0;
+    padding: 6px 10px;
+}
+#signup .button, .button-small {
+    border: 0 none;
+    border-radius: 4px 4px 4px 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Helvetica',Arial,sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: bold;
+    height: 32px;
+    line-height: 32px;
+    margin: 5px 5px 0 0;
+    padding: 0 22px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: top;
+    white-space: nowrap;
+    width: auto;
+}
+#signup .button-small {
+    display: inline-block;
+    float: none;
+    font-size: 11px !important;
+    height: auto;
+    line-height: 18px !important;
+    padding: 2px 15px !important;
+}
+#signup .button span {
+    border: medium none;
+    cursor: pointer;
+    display: inline;
+    font-family: 'Helvetica',Arial,sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 32px;
+    text-decoration: none;
+}
+#signup .rounded6 {
+    border-radius: 6px 6px 6px 6px;
+}
+#signup .poweredWrapper {
+    margin: 0 auto;
+    padding: 20px 0;
+    width: 560px;
+}
+#signup .poweredBy {
+    display: block;
+}
+#signup span.or {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    margin: 5px 5px 0 0;
+    padding: 0 5px;
+}
+#signup .clear {
+    clear: both;
+}
+#signup .profile-list {
+    border-top: 1px solid #EEEEEE;
+    display: block;
+    list-style: none outside none;
+    margin: 15px 20px;
+    padding: 0;
+}
+#signup .profile-list li {
+    border-bottom: 1px solid #EEEEEE;
+    display: block;
+    margin: 0;
+    padding: 5px 0;
+}
+
+#signup body, #bodyTable {
+    background-color: #6FD3DA;
+}
+
+#templateContainer {
+    background-color: #FFFFFF;
+}
+#signup #templateBody {
+    background-color: #FFFFFF;
+}
+#signup .bodyContent {
+    color: #333333;
+    font-family: Helvetica;
+    font-size: 12px;
+    line-height: 150%;
+    padding: 20px;
+}
+#signup a:link, a:active, a:visited, a {
+    color: #336699;
+}
+#signup .button:link, .button:active, .button:visited, .button, .button span, .button-small:link, .button-small:active, .button-small:visited, .button-small {
+    background-color: #E26927;
+    color: #FFFFFF;
+}
+#signup .button:hover, .button-small:hover {
+    background-color: #1E5781;
+    color: #FFFFFF;
+}
+#signup label {
+    color: #333333;
+    font-family: Helvetica;
+    font-size: 14px;
+    line-height: 150%;
+}
+#signup .field-group {
+    background-color: #EEEEEE;
+    border-color: #D0D0D0;
+    border-width: 2px;
+}
+#signup .datefield input, .phonefield-us input, .addressfield input {
+    border-bottom: 1px solid #999999;
+    border-color: #999999;
+}
+#signup .field-group input, .field-group textarea {
+    color: #333333;
+    font-family: Helvetica;
+    font-size: 16px;
+}
+#signup .asterisk {
+    color: #CC6600;
+}
+#signup .field-help {
+    background-color: #DCDCDC;
+    color: #000000;
+}
+#signup .error, .errorText {
+    background-color: #F4BFBF;
+    color: #6B0505;
+    font-size: 12px;
+}
+
+#webcastContainer {
+	margin-top: 50px;
+}

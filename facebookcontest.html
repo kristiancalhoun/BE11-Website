@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><!-- InstanceBegin template="/Templates/MainTemplate.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<!-- InstanceBeginEditable name="doctitle" -->
+    <meta name="description" content="Learn about the Brunswick Eruption Facebook Photo Contest." />
+	<title>Facebook Contest - Brunswick Eruption</title>
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="buttons/buttons.css" rel="stylesheet" type="text/css"/>
+	<script src="jquery1.6.2.js" type="text/javascript"></script>	
+
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-6958956-2']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+	
+	<!-- jQuery code for sticky navigation from http://www.backslash.gr/content/blog/webdevelopment/6-navigation-menu-that-stays-on-top-with-jquery-->
+	<script type="text/javascript">
+	$(function() {
+		var sticky_navigation_offset_top = $('#sticky_navigation_wrapper').offset().top;
+		 
+		var sticky_navigation = function(){
+			var scroll_top = $(window).scrollTop();
+			if (scroll_top > sticky_navigation_offset_top) {
+				$('#sticky_navigation_wrapper').css({ 'position': 'fixed', 'top':0});
+			} else {
+				$('#sticky_navigation_wrapper').css({ 'position': 'relative' });
+			}  
+		};
+		 
+		sticky_navigation();
+		 
+		$(window).scroll(function() {
+			 sticky_navigation();
+		});
+	});
+	</script>
+</head>
+<body>
+	<!-- Facebook and Twitter scripts -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<!-- End Facebook and Twitter scripts -->
+	
+	<div id="headerBackground">
+		<div id="header">
+			<img  id="headerImage" src="./images/header.png" alt="" onDragStart="return false;"/>
+		</div>
+	</div>
+	<div id="sticky_navigation_wrapper">
+        <div id="sticky_navigation">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="register.html">Register</a></li>
+				<li><a href="volunteer.html">Volunteer</a></li>
+				<li><a href="teams.html">Team List</a></li>
+				<li><a href="awards.html">Awards</a></li>
+				<li><a href="agenda.html">Agenda</a></li>
+				<li><a href="local.html">Directions</a></li>
+				<li><a href="history.html">History</a></li>
+				<li><a href="subscribe.html">Subscribe</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+        </div>
+	</div>
+		<div class="mainContent">
+			<h3 class="centered">Facebook Photo Contest</h3>
+			<p>
+			What is your team doing in the off-season to prepare for Brunswick Eruption?
+			Training new drivers? Adding new robot functionality? Catching some sun?
+			Whatever it is, we want to see it! 
+			</p>
+			<p> Send us a picture of how your team is getting ready to compete at BE and you'll earn
+			your team <strong>50 Aloha Award points</strong>. The fan-favorite photo
+			will win 250 points!</p>
+			
+			<strong>Rules</strong>
+			<ol>
+				<li>Always practice safety first.</li>
+				<li>All photos must appropriate.</li>
+				<li>You don’t necessarily have to be in uniform, but it should be obvious which team you are with (i.e. a display of team colors, number, mascot, or some other indicator should be in the photo).</li>
+				<li>Your photo should feature at least this year’s robot.</li>
+				<li>Photos must be submitted by midnight on October 27th.</li>
+				<li>To submit, upload your photo to <a href="http://www.facebook.com/BrunswickEruption" target="_blank">Brunswick Eruption’s Facebook wall</a> and include your team number in the post.</li>
+				<li>Be creative! Remember, you’re not just preparing any old off-season—Brunswick Eruption is the ultimate November New Jersey Hawaiian robotics getaway!</li>
+			</ol>
+
+			<strong>Voting</strong>
+			<ol>
+				<li>After being posted to the <a href="http://www.facebook.com/BrunswickEruption" target="_blank">Brunswick Eruption Facebook wall</a>, photos will be uploaded into the “BE 11 Photo Contest” album.</li>
+				<li>To vote, simply “Like” a picture in the album.</li>
+				<li>Voting will be open until 9AM on the morning of Brunswick Eruption 11 (November 3rd, 2012).</li>
+				<li>The team whose photo receives the most votes will win 250 pts towards being in the running for the Aloha Award!</li>
+			</ol>
+		</div>
+		<img  id="floral" src="./images/flower.png" alt=""/>
+		<div id="social">
+		<div class="fb-like" data-href="http://www.facebook.com/BrunswickEruption" data-send="false" data-layout="box_count" data-width="50" data-show-faces="false" data-font="lucida grande"></div>
+			<a href="https://twitter.com/BrunsEruption" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @BrunsEruption</a>
+		</div>
+		
+		<div id="footer">
+			<div id="footerContent">
+			<a href="http://www.usfirst.org" target="_blank"> <img id="FIRSTlogo" src="images/FIRST_vert.gif" alt=""/></a>
+			<a href="http://www.raiderrobotix.org" target="_blank"> <img id="RaiderRobotixLogo" src="images/Team25Logo.png" alt=""/></a>
+			</div>
+			<div id="copyright">
+				Copyright Raider Robotix / Brunswick Eruption 2012
+			</div>
+		</div>
+</body>
+</html>

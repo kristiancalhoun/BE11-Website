@@ -1,0 +1,114 @@
+/* Mobile app */
+.mblToolBarButton.tweetviewRefresh {
+    float: right;
+    height: 29px;
+    width: 29px;
+}
+
+.tweetviewRefresh img {
+    margin-top: 6px;
+}
+
+.rankSpan {
+	float: right;
+	margin-top: -8px;
+	margin-right: 10px;
+}
+
+.rankRecord {
+	font-size: 12px;
+	display:block;
+	text-align: right;
+}
+
+.rankingPoints {
+	font-size: 10px;
+	color: #888;
+	font-weight: 200;
+	text-align: right;
+}
+
+.matchResultSpan {
+	margin-right: 10px;
+}
+
+.alliances {
+	float: left;
+	font-weight: 200;
+	margin-top: -6px;
+}
+
+.alliances td {
+	padding: 0 5px;
+	font-size: 12px;
+}
+
+.redAlliance {
+	color: #FF0000;
+	padding: 2px 3px;
+	text-align: right;
+}
+
+.blueAlliance {
+	color: #0000FF;
+	padding: 2px 3px;	
+	text-align: right;
+}
+
+.redScore {
+	color: #FF0000;
+}
+
+.blueScore {
+	color: #0000FF;
+}
+
+.matchScore {
+	margin: 0 5px 0 10px;
+}
+
+.matchCP {
+	float:right;
+	font-weight: 200;
+	font-size: 12px;
+	margin-top: 2px;
+}
+
+.installInstructions {
+	font-weight: 200;
+	font-size: 12px;
+}
+
+.foodMenu {
+	font-weight: 200;
+	font-size: 12px;
+	margin: 0 0 0 10px;
+}
+
+.no-decoration {
+	text-decoration: none;
+	list-style-type: none;
+}
+
+.inlineImg {
+	height: 30px;
+	width: auto;
+}
+
+.agenda td {
+	padding: 0 15px;
+	font-size: 12px;
+}
+
+#loader {
+    background: #fff;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 999;
+  }

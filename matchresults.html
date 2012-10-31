@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><!-- InstanceBegin template="/Templates/MainTemplate.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<!-- InstanceBeginEditable name="doctitle" -->
+    <meta name="description" content="View live qualification match results from BE 11." />
+	<title>Match Results - Brunswick Eruption 11</title>
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="buttons/buttons.css" rel="stylesheet" type="text/css"/>
+	<script src="jquery1.6.2.js" type="text/javascript"></script>	
+
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-6958956-2']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</head>
+<body>
+	<!-- Facebook and Twitter scripts -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<!-- End Facebook and Twitter scripts -->
+	
+	<div id="headerBackground">
+		<div id="header">
+			<img  id="headerImage" src="./images/header.png" alt="" onDragStart="return false;"/>
+		</div>
+	</div>
+	<div id="sticky_navigation_wrapper">
+        <div id="sticky_navigation">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="register.html">Register</a></li>
+				<li><a href="volunteer.html">Volunteer</a></li>
+				<li><a href="teams.html">Team List</a></li>
+				<li><a href="awards.html">Awards</a></li>
+				<li><a href="agenda.html">Agenda</a></li>
+				<li><a href="local.html">Directions</a></li>
+				<li><a href="history.html">History</a></li>
+				<li><a href="subscribe.html">Subscribe</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+        </div>
+	</div>
+		<h3 class="centered"><a class="no-decoration"href="rankings.html">Team Rankings</a> | <a class="no-decoration" href="webcast.html">Webcast</a></h3>
+		<div class="mainContent">			
+			<h3 class="centered">Qualification Match Results</h3>
+			<table id="qualificationResultsTable" class="centered table table-striped table-bordered table-condensed">
+				<tr>
+					<td><strong>Match</strong></td>
+					<td><strong>Red 1</strong></td>
+					<td><strong>Red 2</strong></td>
+					<td><strong>Red 3</strong></td>
+					<td><strong>Blue 1</strong></td>
+					<td><strong>Blue 2</strong></td>
+					<td><strong>Blue 3</strong></td>
+					<td><strong>Red Score</strong></td>
+					<td><strong>Blue Score</strong></td>
+				</tr>
+			</table>
+			<h3 class="centered">Elimination Match Results</h3>
+			<table id="eliminationResultsTable" class="centered table table-striped table-bordered table-condensed">
+				<tr>
+					<td><strong>Match</strong></td>
+					<td><strong>Red 1</strong></td>
+					<td><strong>Red 2</strong></td>
+					<td><strong>Red 3</strong></td>
+					<td><strong>Blue 1</strong></td>
+					<td><strong>Blue 2</strong></td>
+					<td><strong>Blue 3</strong></td>
+					<td><strong>Red Score</strong></td>
+					<td><strong>Blue Score</strong></td>
+				</tr>
+			</table>
+			<script type="text/javascript">
+				$("document").ready( function() {						  					
+					$.ajax( {
+						url: "getMatchResults.php",
+						type: "GET",
+						dataType: 'json',
+						success: function( matchResults ) {
+							var resultsTable;
+							for (var i = 0; i < matchResults.length; i++) {
+								if (matchResults[i].type === 'Q') {
+									resultsTable = document.getElementById('qualificationResultsTable');
+								} else if (matchResults[i].type === 'E') {
+									resultsTable = document.getElementById('eliminationResultsTable');
+								} else {
+									return;
+								}
+							
+								var rowCount = resultsTable.rows.length;
+								var row = resultsTable.insertRow(rowCount);
+								var cell;
+								row.insertCell(0).innerHTML = matchResults[i].matchNumber;
+								cell = row.insertCell(1);
+								cell.innerHTML = matchResults[i].red[0];
+								cell.className = 'redTeam';
+								cell = row.insertCell(2);
+								cell.innerHTML = matchResults[i].red[1];
+								cell.className = 'redTeam';
+								cell = row.insertCell(3);
+								cell.innerHTML = matchResults[i].red[2];
+								cell.className = 'redTeam';
+								cell = row.insertCell(4);
+								cell.innerHTML = matchResults[i].blue[0];
+								cell.className = 'blueTeam';
+								cell = row.insertCell(5);
+								cell.innerHTML = matchResults[i].blue[1];
+								cell.className = 'blueTeam';
+								cell = row.insertCell(6);
+								cell.innerHTML = matchResults[i].blue[2];
+								cell.className = 'blueTeam';
+								
+								var redScore = matchResults[i].redFinal
+								var blueScore = matchResults[i].blueFinal;
+																
+								cell = row.insertCell(7);
+								cell.innerHTML = redScore;
+								cell.className = (redScore > blueScore) ? 'redWinner' : 'redScore';
+								cell = row.insertCell(8);
+								cell.innerHTML = blueScore;
+								cell.className = (blueScore > redScore) ? 'blueWinner' : 'blueScore';
+							}
+						}	
+					});
+				});
+			</script>
+		</div>
+		
+		<img  id="floral" src="./images/flower.png" alt=""/>
+		<div id="social">
+		<div class="fb-like" data-href="http://www.facebook.com/BrunswickEruption" data-send="false" data-layout="box_count" data-width="50" data-show-faces="false" data-font="lucida grande"></div>
+			<a href="https://twitter.com/BrunsEruption" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @BrunsEruption</a>
+		</div>
+		
+		<div id="footer">
+			<div id="footerContent">
+			<a href="http://www.usfirst.org" target="_blank"> <img id="FIRSTlogo" src="images/FIRST_vert.gif" alt=""/></a>
+			<a href="http://www.raiderrobotix.org" target="_blank"> <img id="RaiderRobotixLogo" src="images/Team25Logo.png" alt=""/></a>
+			</div>
+			<div id="copyright">
+				Copyright Raider Robotix / Brunswick Eruption 2012
+			</div>
+		</div>
+</body>
+</html>
+	

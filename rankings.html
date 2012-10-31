@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"><!-- InstanceBegin template="/Templates/MainTemplate.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<!-- InstanceBeginEditable name="doctitle" -->
+    <meta name="description" content="View live qualification match results from BE 11." />
+	<title>Rankings - Brunswick Eruption 11</title>
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="buttons/buttons.css" rel="stylesheet" type="text/css"/>
+	<script src="jquery1.6.2.js" type="text/javascript"></script>	
+
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-6958956-2']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</head>
+<body>
+	<!-- Facebook and Twitter scripts -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<!-- End Facebook and Twitter scripts -->
+	
+	<div id="headerBackground">
+		<div id="header">
+			<img  id="headerImage" src="./images/header.png" alt="" onDragStart="return false;"/>
+		</div>
+	</div>
+	<div id="sticky_navigation_wrapper">
+        <div id="sticky_navigation">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="register.html">Register</a></li>
+				<li><a href="volunteer.html">Volunteer</a></li>
+				<li><a href="teams.html">Team List</a></li>
+				<li><a href="awards.html">Awards</a></li>
+				<li><a href="agenda.html">Agenda</a></li>
+				<li><a href="local.html">Directions</a></li>
+				<li><a href="history.html">History</a></li>
+				<li><a href="subscribe.html">Subscribe</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+        </div>
+	</div>
+		<h3 class="centered"><a class="no-decoration" href="matchresults.html">Match Results</a> | <a class="no-decoration"href="webcast.html">Webcast</a></h3>
+		<div class="mainContent">
+			<h3 class="centered">Brunswick Eruption 11 Rankings</h3>
+			<table id="rankingsTable" class="centered table table-striped table-bordered table-condensed">
+				<tr>
+					<td><strong>Rank</strong></td>
+					<td><strong>Team</strong></td>
+					<td><strong>QS</strong></td>
+					<td><strong>HP</strong></td>
+					<td><strong>BP</strong></td>
+					<td><strong>TP</strong></td>
+					<td><strong>CP</strong></td>
+					<td><strong>Record (W-L-T)</strong></td>
+					<td><strong>Played</strong></td>
+				</tr>
+			</table>
+			<script type="text/javascript">
+				var Team = function(number) {
+					this.number = number;
+					this.QS = 0;
+					this.HP = 0;
+					this.BP = 0;
+					this.TP = 0;
+					this.CP = 0;
+					this.wins = 0;
+					this.losses = 0;
+					this.ties = 0;
+					this.played = 0;
+				};
+				var teams = [];
+				
+				/**
+				 * Return the Team with the specified number from the list.
+				 * If the team isn't found, it is added to the list.
+				 */
+				function getTeam(number) {
+					for (var i = 0; i < teams.length; i++) {
+						if (teams[i].number === number) {
+							return teams[i];
+						}
+					}
+					var newTeam = new Team(number);
+					teams.push(newTeam);
+					return newTeam;
+				}
+				
+				$("document").ready( function() {						  					
+					$.ajax( {
+						url: "getMatchResults.php",
+						type: "GET",
+						dataType: 'json',
+						success: function( matchResults ) {
+							// First get all the team data
+							for (var i = 0; i < matchResults.length; i++) {
+								if (matchResults[i].type === 'Q') {
+									var j;
+									var team;
+									var redQS, blueQS;
+									if (matchResults[i].redFinal > matchResults[i].blueFinal) {
+										redQS = 2;
+										blueQS = 0;
+									} else if (matchResults[i].redFinal < matchResults[i].blueFinal) {
+										redQS = 0;
+										blueQS = 2;
+									} else {
+										redQS = 1;
+										blueQS = 1;
+									}
+									
+									var redTeams = matchResults[i].red;
+									for (j = 0; j < redTeams.length; j++) {
+										team = getTeam(redTeams[j]);
+										team.QS += redQS + matchResults[i].CP;
+										team.HP += matchResults[i].redHybrid;
+										team.BP += matchResults[i].redBridge;
+										team.TP += matchResults[i].redTeleop;
+										team.CP += matchResults[i].CP;
+										if (matchResults[i].redFinal > matchResults[i].blueFinal) {
+											team.wins += 1;
+										} else if (matchResults[i].redFinal < matchResults[i].blueFinal) {
+											team.losses += 1;
+										} else {
+											team.ties += 1;
+										}
+										team.played++;
+									}
+									
+									var blueTeams = matchResults[i].blue;
+									for (j = 0; j < blueTeams.length; j++) {
+										team = getTeam(blueTeams[j]);
+										team.QS += blueQS + matchResults[i].CP;
+										team.HP += matchResults[i].blueHybrid;
+										team.BP += matchResults[i].blueBridge;
+										team.TP += matchResults[i].blueTeleop;
+										team.CP += matchResults[i].CP;
+										if (matchResults[i].redFinal < matchResults[i].blueFinal) {
+											team.wins += 1;
+										} else if (matchResults[i].redFinal > matchResults[i].blueFinal) {
+											team.losses += 1;
+										} else {
+											team.ties += 1;
+										}
+										team.played++;
+									}
+								}
+							}
+							
+							// Then sort
+							// 4th order by Teleop points
+							teams.sort(function(a, b) {
+								return a.TP - b.TP;
+							});
+							
+							// 3rd order by Bridge points
+							teams.sort(function(a, b) {
+								return a.BP - b.BP;
+							});
+							
+							// 2nd order by Hybrid points
+							teams.sort(function(a, b) {
+								return a.HP - b.HP;
+							});
+							
+							// 1st order by Qualification Score
+							teams.sort(function(a, b) {
+								return a.QS - b.QS;
+							});
+							
+							teams.reverse();
+							
+							//Then display the rankings
+							var resultsTable;
+							for (var i = 0; i < teams.length; i++) {
+								resultsTable = document.getElementById('rankingsTable');
+							
+								var rowCount = resultsTable.rows.length;
+								var row = resultsTable.insertRow(rowCount);
+								var cell;
+								row.insertCell(0).innerHTML = i + 1;
+								cell = row.insertCell(1);
+								cell.innerHTML = teams[i].number;
+								cell = row.insertCell(2);
+								cell.innerHTML = teams[i].QS
+								cell = row.insertCell(3);
+								cell.innerHTML = teams[i].HP;
+								cell = row.insertCell(4);
+								cell.innerHTML = teams[i].BP;
+								cell = row.insertCell(5);
+								cell.innerHTML = teams[i].TP;
+								cell = row.insertCell(6);
+								cell.innerHTML = teams[i].CP;
+								cell = row.insertCell(7);
+								cell.innerHTML = teams[i].wins + '-' + teams[i].losses + '-' + teams[i].ties;
+								cell = row.insertCell(8);
+								cell.innerHTML = teams[i].played;
+							}
+						}	
+					});
+				});
+			</script>
+		</div>
+		
+		<img  id="floral" src="./images/flower.png" alt=""/>
+		<div id="social">
+		<div class="fb-like" data-href="http://www.facebook.com/BrunswickEruption" data-send="false" data-layout="box_count" data-width="50" data-show-faces="false" data-font="lucida grande"></div>
+			<a href="https://twitter.com/BrunsEruption" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @BrunsEruption</a>
+		</div>
+		
+		<div id="footer">
+			<div id="footerContent">
+			<a href="http://www.usfirst.org" target="_blank"> <img id="FIRSTlogo" src="images/FIRST_vert.gif" alt=""/></a>
+			<a href="http://www.raiderrobotix.org" target="_blank"> <img id="RaiderRobotixLogo" src="images/Team25Logo.png" alt=""/></a>
+			</div>
+			<div id="copyright">
+				Copyright Raider Robotix / Brunswick Eruption 2012
+			</div>
+		</div>
+</body>
+</html>
+	

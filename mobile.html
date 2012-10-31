@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+
+		<!-- prevent cache -->
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+
+		<title>FRCTurtle</title>
+		
+		<link rel="apple-touch-icon" href="images/apple-touch-icon-iphone.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-ipad.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-iphone4.png" />
+		<link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-ipad3.png" />	
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<link rel="icon" type="image/png" href="images/favicon.png" />
+		
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+		
+		<!-- dojo/javascript will go here -->
+		<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.0/dojo/dojo.js"
+		data-dojo-config="async:true"></script>
+		<script src="mobile.js"></script>
+		<script src="jquery1.6.2.js" type="text/javascript"></script>
+		
+		<!-- stylesheets will go here -->
+		<link href="mobileStyle.css" rel="stylesheet" type="text/css" media="screen" />
+		
+		<!-- Google Analytics --> 
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-6958956-2']);
+			_gaq.push(['_trackPageview']);
+			
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+		<div id="loader"></div>
+		<!-- home view -->
+		<div id="home" data-dojo-type="dojox.mobile.ScrollableView" data-dojo-props="selected: true">
+			<h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">
+				Brunswick Eruption 11
+			</h1>
+			<img src="images/BEHeaderWhiteTurtle.png"/>
+			<ul id="homeMenu" dojoType="dojox.mobile.RoundRectList">
+				<li data-dojo-type="dojox.mobile.ListItem" moveTo="teamList"
+					data-dojo-props='label:"Team List", rightIcon:"mblDomButtonGrayArrow"'>
+				</li>
+				<li data-dojo-type="dojox.mobile.ListItem" moveTo="schedule"
+					data-dojo-props='label:"Event Schedule", rightIcon:"mblDomButtonGrayArrow"'>
+				</li>
+				<li data-dojo-type="dojox.mobile.ListItem" moveTo="foodmenu"
+					data-dojo-props='label:"Food Menu", rightIcon:"mblDomButtonGrayArrow"'>
+				</li>
+				<li data-dojo-type="dojox.mobile.ListItem" moveTo="instructions"
+					data-dojo-props='label:"Installation Instructions", rightIcon:"mblDomButtonGrayArrow"'>
+				</li>
+				<li data-dojo-type="dojox.mobile.ListItem" 
+					data-dojo-props='icon: "images/twitter-bird-light-bgs.png"'>
+					<a href="https://twitter.com/brunseruption" target="_blank">Tweet @BrunsEruption</a>
+				</li>
+			</ul>
+			
+			<!-- the bottom tabbar -->
+			<ul data-dojo-type="dojox.mobile.TabBar" data-dojo-props="fixed: 'bottom', syncWithViews:true">
+				<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1: 'images/app-bits_free_tabbar_icons/standard/house.png', icon2: 'images/app-bits_free_tabbar_icons/standard/houseSelected.png', selected: true, moveTo: 'home'">Home</li>
+				<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1: 'images/app-bits_free_tabbar_icons/standard/graph_bar_trend.png', icon2: 'images/app-bits_free_tabbar_icons/standard/graph_bar_trendSelected.png', moveTo: 'rankings'">Rankings</li>
+				<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1: 'images/app-bits_free_tabbar_icons/standard/network.png', icon2: 'images/app-bits_free_tabbar_icons/standard/networkSelected.png', moveTo: 'matchResults'">Match Results</li>
+			</ul>
+		</div>
+		
+		<!-- rankings view -->
+		<div id="rankings" data-dojo-type="dojox.mobile.ScrollableView">
+			<h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">
+				<!-- the refresh button -->
+				<div id="refreshRankings" data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="icon: 'images/refresh.png'" class="mblDomButton tweetviewRefresh" style="float:right;"></div>
+				Rankings
+			</h1>
+			<ul id="rankingsList" dojoType="dojox.mobile.RoundRectList">
+			</ul>
+			<!-- the bottom tabbar -->
+			<ul data-dojo-type="dojox.mobile.TabBar" data-dojo-props="fixed: 'bottom', syncWithViews: true">
+				<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1: 'images/app-bits_free_tabbar_icons/standard/house.png', icon2: 'images/app-bits_free_tabbar_icons/standard/houseSelected.png', moveTo: 'home'">Home</li>
+				<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1: 'images/app-bits_free_tabbar_icons/standard/graph_bar_trend.png', icon2: 'images/app-bits_free_tabbar_icons/standard/graph_bar_trendSelected.png', selected: true, moveTo: 'rankings'">Rankings</li>
+				<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1: 'images/app-bits_free_tabbar_icons/standard/network.png', icon2: 'images/app-bits_free_tabbar_icons/standard/networkSelected.png', moveTo: 'matchResults'">Match Results</li>
+			</ul>
+		</div>
+
+		<!-- match results view -->
+		<div id="matchResults" data-dojo-type="dojox.mobile.ScrollableView">
+			<h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">
+				<!-- the refresh button -->
+				<div id="refreshMatchResults" data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="icon: 'images/refresh.png'" class="mblDomButton tweetviewRefresh" style="float:right;"></div>
+				Match Results
+			</h1>
+			<ul id="matchResultsList" dojoType="dojox.mobile.RoundRectList">
+			</ul>
+			<!-- the bottom tabbar -->
+			<ul data-dojo-type="dojox.mobile.TabBar" data-dojo-props="fixed: 'bottom', syncWithViews: true">
+				<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1: 'images/app-bits_free_tabbar_icons/standard/house.png', icon2: 'images/app-bits_free_tabbar_icons/standard/houseSelected.png', moveTo: 'home'">Home</li>
+				<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1: 'images/app-bits_free_tabbar_icons/standard/graph_bar_trend.png', icon2: 'images/app-bits_free_tabbar_icons/standard/graph_bar_trendSelected.png', moveTo: 'rankings'">Rankings</li>
+				<li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1: 'images/app-bits_free_tabbar_icons/standard/network.png', icon2: 'images/app-bits_free_tabbar_icons/standard/networkSelected.png', selected: true, moveTo: 'matchResults'">Match Results</li>
+			</ul>
+		</div>
+		
+		<!-- instructions -->
+		<div id="instructions" data-dojo-type="dojox.mobile.ScrollableView">
+			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="home" data-dojo-props="fixed: 'top'">
+				How To Install
+			</h1>
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory">iPhone</h2>
+			<div data-dojo-type="dojox.mobile.RoundRect">
+				<span class="installInstructions">
+				<ol>
+					<li>Click the <img class="inlineImg" src="images/sharing_icon.jpg" height="30px"> icon, located at the bottom of Safari.</li>
+					<li>Then select "Add to Home Screen."</li>
+				</ol>
+				</span>
+			</div>
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Android</h2>
+			<div data-dojo-type="dojox.mobile.RoundRect">
+				<span class="installInstructions">
+				<ol>
+					<li>Press the Menu button.</li>
+					<li>Click "Bookmarks" and/or then click "Add Bookmark."</li>
+					<li>From the bookmarks menu, long press the bookmark and click Add Shortcut to Homescreen.</li>
+					<ol>Alternately,
+					<li>Long press a blank area on the homescreen</li>
+					<li>Select Shortcuts</li>
+					<li>Select Bookmarks</li>
+					<li>Choose the bookmark added for http://be.raiderrobotix.org/mobile.html.</li>
+					</ol>
+				</ol>
+				</span>
+			</div>
+		</div>
+		
+		<!-- schedule -->
+		<div id="schedule" data-dojo-type="dojox.mobile.ScrollableView">
+			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="home" data-dojo-props="fixed: 'top'">
+				Event Schedule
+			</h1>
+			<div data-dojo-type="dojox.mobile.RoundRect">
+				<table class="agenda">
+					<tr>
+						<td>7 AM</td>
+						<td>Doors Open</td>
+					</tr>
+					<tr>
+						<td>7:30 - 8:15 AM</td>
+						<td>Practice Matches</td>
+					</tr>
+					<tr>
+						<td>8:15 - 8:25 AM</td>
+						<td>Drivers Meeting</td>
+					</tr>
+					<tr>
+						<td>8:25 - 8:40 AM</td>
+						<td>Opening Ceremonies</td>
+					</tr>
+					<tr>
+						<td>8:40-12:45 PM</td>
+						<td>Seeding Rounds</td>
+					</tr>
+					<tr>
+						<td>12:45-1:00 PM</td>
+						<td>Alliance Selections</td>
+					</tr>
+					<tr>
+						<td>1:00 - 1:50 PM</td>
+						<td>Lunch</td>
+					</tr>
+					<tr>
+						<td>1:50 - 2:05 PM</td>
+						<td>Evil Sundae Contest</td>
+					</tr>
+					<tr>
+						<td>2:05 - 2:30 PM</td>
+						<td>Brief Awards Ceremony</td>
+					</tr>
+					<tr>
+						<td>2:30 - 4:30 PM</td>
+						<td>Elimination Rounds</td>
+					</tr>
+					<tr>
+						<td>4:30 - 4:45 PM</td>
+						<td>Closing Ceremonies</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<!-- food menu -->
+		<div id="foodmenu" data-dojo-type="dojox.mobile.ScrollableView">
+			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="home" data-dojo-props="fixed: 'top'">
+				Food Menu
+			</h1>
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Breakfast</h2>
+			<div data-dojo-type="dojox.mobile.RoundRect">
+				<ul class="foodMenu no-decoration">
+				<li>Donuts</li>
+				<li>Bagels</li>
+				<li>Muffins</li>
+				</ul>
+			</div>
+			
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Lunch</h2>	
+			<div data-dojo-type="dojox.mobile.RoundRect">
+				<ul class="foodMenu no-decoration">
+				<li>Hot dogs (toppings: cheese, sauerkraut, chili)</li>
+				<li>Meatball sandwich</li>
+				<li>Grilled cheese sandwich</li>
+				<li>Turkey sandwich (w/ or w/out cheese)</li>
+				<li>Nachos (toppings: cheese and/or chili)</li>
+				<li>Chili</li>
+				<li>Veggie snack tray</li>
+				</ul>
+			</div>
+			
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Snacks</h2>	
+			<div data-dojo-type="dojox.mobile.RoundRect">
+				<ul class="foodMenu no-decoration">
+				<li>Chips</li>
+				<li>Home baked goods</li>
+				<li>Candy</li>
+				</ul>
+			</div>				
+			
+			<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Beverages</h2>	
+			<div data-dojo-type="dojox.mobile.RoundRect">
+				<ul class="foodMenu no-decoration">
+				<li>Coffee</li>
+				<li>Tea</li>
+				<li>Orange Juice</li>
+				<li>Water</li>
+				<li>Soda: Coke, Diet Coke, Sprite, Ginger Ale</li>
+				<li>Snapple in a variety of flavors</li>
+				<li>Iced Tea - Regular and Diet</li>
+				<li>Starbucks Frappuccino </li>
+				</ul>
+			</div>
+		</div>
+		
+		<!-- Team list -->
+		<div id="teamList" data-dojo-type="dojox.mobile.ScrollableView">
+			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="home" data-dojo-props="fixed: 'top'">
+				Team List
+			</h1>
+			<ul id="teamListList" dojoType="dojox.mobile.RoundRectList">
+				<li data-dojo-type="dojox.mobile.ListItem" label="25" rightText="Raider Robotix" data-dojo-props="moveTo:'homematches25'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="41" rightText="RoboWarriors" data-dojo-props="moveTo:'homematches41'"></li>				
+				<li data-dojo-type="dojox.mobile.ListItem" label="75" rightText="RoboRaiders" data-dojo-props="moveTo:'homematches75'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="103" rightText="Cybersonics" data-dojo-props="moveTo:'homematches103'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="222" rightText="Tigertrons" data-dojo-props="moveTo:'homematches222'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="224" rightText="The Tribe" data-dojo-props="moveTo:'homematches224'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="293" rightText="SPIKE" data-dojo-props="moveTo:'homematches293'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="303" rightText="TEST Team" data-dojo-props="moveTo:'homematches303'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="341" rightText="Miss Daisy" data-dojo-props="moveTo:'homematches341'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="358" rightText="Robotic Eagles" data-dojo-props="moveTo:'homematches358'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="369" rightText="High Voltage" data-dojo-props="moveTo:'homematches369'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="371" rightText="Curtis Cyber Warriors" data-dojo-props="moveTo:'homematches271'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="375" rightText="Robotic Plague" data-dojo-props="moveTo:'homematches375'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="395" rightText="2 Train Robotics" data-dojo-props="moveTo:'homematches395'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="533" rightText="The PSIcotics" data-dojo-props="moveTo:'homematches533'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="613" rightText="Neowarriors" data-dojo-props="moveTo:'homematches613'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="806" rightText="Brooklyn Blacksmiths" data-dojo-props="moveTo:'homematches806'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="888" rightText="Robotiators" data-dojo-props="moveTo:'homematches888'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="889" rightText="Robotiators Pre-rookie" data-dojo-props="moveTo:'homematches889'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1075" rightText="Sinclair Sprockets" data-dojo-props="moveTo:'homematches1075'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1089" rightText="Team Mercury" data-dojo-props="moveTo:'homematches1089'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1143" rightText="Cruzin' Comets" data-dojo-props="moveTo:'homematches1143'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1279" rightText="Cold Fusion" data-dojo-props="moveTo:'homematches1279'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1302" rightText="Team Lionheart" data-dojo-props="moveTo:'homematches1302'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1626" rightText="Falcon Robotics" data-dojo-props="moveTo:'homematches1626'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1640" rightText="Sa-BOT-age" data-dojo-props="moveTo:'homematches1640'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1676" rightText="Pascack Pi-oneers" data-dojo-props="moveTo:'homematches1676'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1807" rightText="Redbird Robotics" data-dojo-props="moveTo:'homematches1807'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1923" rightText="Midknight Inventors" data-dojo-props="moveTo:'homematches1923'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="1924" rightText="<span style='font-size: 14px;'>Lawrence HS Pre-rookie</span>" data-dojo-props="moveTo:'homematches1924'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="2180" rightText="Zero Gravity" data-dojo-props="moveTo:'homematches2180'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="2458" rightText="Team Chaos" data-dojo-props="moveTo:'homematches2458'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="2495" rightText="<span style='font-size: 14px;'>Hamilton West Robotics</span>" data-dojo-props="moveTo:'homematches2495'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="2554" rightText="The Warhawks" data-dojo-props="moveTo:'homematches2554'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="2590" rightText="Nemesis" data-dojo-props="moveTo:'homematches2590'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="2607" rightText="Fighting Robovikings" data-dojo-props="moveTo:'homematches2607'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="3167" rightText="<span style='font-size: 12px;'>Environmental Tectonics Crusaders</span>" data-dojo-props="moveTo:'homematches3167'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="3314" rightText="Mechanical Mustangs" data-dojo-props="moveTo:'homematches3314'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="3607" rightText="Technologic" data-dojo-props="moveTo:'homematches3607'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="3637" rightText="The Daleks" data-dojo-props="moveTo:'homematches3637'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="4067" rightText="Incredible Hawks" data-dojo-props="moveTo:'homematches4067'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="4281" rightText="Bulldogs" data-dojo-props="moveTo:'homematches4281'"></li>
+			</ul>
+		</div>
+		
+		
+	</body>
+</html>
