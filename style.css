@@ -95,7 +95,7 @@ body {
 .slider-wrapper {
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 50px;
+	margin-top: 25px;
 	height: 300px;
 	width: 700px;
 	-webkit-box-shadow:0 0 25px #41c1cd; 
@@ -167,6 +167,12 @@ body {
 .fb-like {
 	padding-left: 15px;
 	margin-bottom: 10px;
+}
+
+.homepageAnnouncement {
+	width: 700px;
+	padding: 5px;
+	margin: 20px auto 0 auto;
 }
 
 .mainContent {
