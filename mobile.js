@@ -89,23 +89,6 @@ require(
 						// First get all the team data
 						teams = [];
 						for (var i = 0; i < matchResults.length; i++) {
-						
-							// Add match results to match result view
-							var match = matchResults[(matchResults.length - 1) - i];	// Most recent first
-							var matchResultWidget = registry.byId("matchResultsList");
-							var matchWidget = new dojox.mobile.ListItem({
-								icon: "",
-								moveTo: "",
-								label: match.type + '' + match.matchNumber,
-								rightText: 
-									"<span class='matchResultSpan'>"+
-									"<table class='alliances'><tr class='redAlliance'><td>" + match.red[0] + "</td><td>" + match.red[1] + "</td><td>" + match.red[2] + "</td></tr>" +
-									"<tr class='blueAlliance'><td>" + match.blue[0] + "</td><td> " + match.blue[1] + "</td><td> " + match.blue[2] + "</td></tr></table>" +
-									"<span class='matchScore'><span class='redScore'>" + match.redFinal + "</span> - <span class='blueScore'>" + match.blueFinal + "</span></span>" +
-									"<span class='matchCP'>CP: " + match.CP + "</span>" +
-									"</span>"
-							});
-							matchResultWidget.addChild(matchWidget);
 							
 							// Do stuff for sorting rankings
 							if (matchResults[i].type === 'Q') {
