@@ -58,6 +58,9 @@
 				<li data-dojo-type="dojox.mobile.ListItem" moveTo="schedule"
 					data-dojo-props='label:"Event Schedule", rightIcon:"mblDomButtonGrayArrow"'>
 				</li>
+				<li data-dojo-type="dojox.mobile.ListItem" moveTo="map"
+					data-dojo-props='label:"Pit Map", rightIcon:"mblDomButtonGrayArrow"'>
+				</li>
 				<li data-dojo-type="dojox.mobile.ListItem" moveTo="foodmenu"
 					data-dojo-props='label:"Food Menu", rightIcon:"mblDomButtonGrayArrow"'>
 				</li>
@@ -144,6 +147,16 @@
 			</div>
 		</div>
 		
+		<!-- map -->
+		<div id="map" data-dojo-type="dojox.mobile.ScrollableView">
+			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="home" data-dojo-props="fixed: 'top'">
+				Pit Map
+			</h1>
+			<div data-dojo-type="dojox.mobile.RoundRect">
+				Coming soon!
+			</div>
+		</div>
+		
 		<!-- schedule -->
 		<div id="schedule" data-dojo-type="dojox.mobile.ScrollableView">
 			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="home" data-dojo-props="fixed: 'top'">
@@ -220,6 +233,7 @@
 				<li>Meatball sandwich</li>
 				<li>Grilled cheese sandwich</li>
 				<li>Turkey sandwich (w/ or w/out cheese)</li>
+				<li>Chala Masala</li>
 				<li>Nachos (toppings: cheese and/or chili)</li>
 				<li>Chili</li>
 				<li>Veggie snack tray</li>
@@ -258,23 +272,16 @@
 			<ul id="teamListList" dojoType="dojox.mobile.RoundRectList">
 				<li data-dojo-type="dojox.mobile.ListItem" label="25" rightText="Raider Robotix" data-dojo-props="moveTo:'homematches25'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="41" rightText="RoboWarriors" data-dojo-props="moveTo:'homematches41'"></li>				
-				<li data-dojo-type="dojox.mobile.ListItem" label="75" rightText="RoboRaiders" data-dojo-props="moveTo:'homematches75'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="103" rightText="Cybersonics" data-dojo-props="moveTo:'homematches103'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="222" rightText="Tigertrons" data-dojo-props="moveTo:'homematches222'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="224" rightText="The Tribe" data-dojo-props="moveTo:'homematches224'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="293" rightText="SPIKE" data-dojo-props="moveTo:'homematches293'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="303" rightText="TEST Team" data-dojo-props="moveTo:'homematches303'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="341" rightText="Miss Daisy" data-dojo-props="moveTo:'homematches341'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="358" rightText="Robotic Eagles" data-dojo-props="moveTo:'homematches358'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="369" rightText="High Voltage" data-dojo-props="moveTo:'homematches369'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="371" rightText="Curtis Cyber Warriors" data-dojo-props="moveTo:'homematches271'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="375" rightText="Robotic Plague" data-dojo-props="moveTo:'homematches375'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="395" rightText="2 Train Robotics" data-dojo-props="moveTo:'homematches395'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="533" rightText="The PSIcotics" data-dojo-props="moveTo:'homematches533'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="371" rightText="Curtis Cyber Warriors" data-dojo-props="moveTo:'homematches371'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="613" rightText="Neowarriors" data-dojo-props="moveTo:'homematches613'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="806" rightText="Brooklyn Blacksmiths" data-dojo-props="moveTo:'homematches806'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="888" rightText="Robotiators" data-dojo-props="moveTo:'homematches888'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="889" rightText="Robotiators Pre-rookie" data-dojo-props="moveTo:'homematches889'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="1075" rightText="Sinclair Sprockets" data-dojo-props="moveTo:'homematches1075'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="1089" rightText="Team Mercury" data-dojo-props="moveTo:'homematches1089'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="1143" rightText="Cruzin' Comets" data-dojo-props="moveTo:'homematches1143'"></li>
@@ -282,22 +289,15 @@
 				<li data-dojo-type="dojox.mobile.ListItem" label="1302" rightText="Team Lionheart" data-dojo-props="moveTo:'homematches1302'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="1626" rightText="Falcon Robotics" data-dojo-props="moveTo:'homematches1626'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="1640" rightText="Sa-BOT-age" data-dojo-props="moveTo:'homematches1640'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="1676" rightText="Pascack Pi-oneers" data-dojo-props="moveTo:'homematches1676'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="1807" rightText="Redbird Robotics" data-dojo-props="moveTo:'homematches1807'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="1923" rightText="Midknight Inventors" data-dojo-props="moveTo:'homematches1923'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="1924" rightText="<span style='font-size: 14px;'>Lawrence HS Pre-rookie</span>" data-dojo-props="moveTo:'homematches1924'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="2180" rightText="Zero Gravity" data-dojo-props="moveTo:'homematches2180'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="2458" rightText="Team Chaos" data-dojo-props="moveTo:'homematches2458'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="2495" rightText="<span style='font-size: 14px;'>Hamilton West Robotics</span>" data-dojo-props="moveTo:'homematches2495'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="2495" rightText="<span style='font-size: 16px;'>Hamilton West Robotics</span>" data-dojo-props="moveTo:'homematches2495'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="2554" rightText="The Warhawks" data-dojo-props="moveTo:'homematches2554'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="2590" rightText="Nemesis" data-dojo-props="moveTo:'homematches2590'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="2607" rightText="Fighting Robovikings" data-dojo-props="moveTo:'homematches2607'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="3167" rightText="<span style='font-size: 12px;'>Environmental Tectonics Crusaders</span>" data-dojo-props="moveTo:'homematches3167'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="3314" rightText="Mechanical Mustangs" data-dojo-props="moveTo:'homematches3314'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="3607" rightText="Technologic" data-dojo-props="moveTo:'homematches3607'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="3637" rightText="The Daleks" data-dojo-props="moveTo:'homematches3637'"></li>
 				<li data-dojo-type="dojox.mobile.ListItem" label="4067" rightText="Incredible Hawks" data-dojo-props="moveTo:'homematches4067'"></li>
-				<li data-dojo-type="dojox.mobile.ListItem" label="4281" rightText="Bulldogs" data-dojo-props="moveTo:'homematches4281'"></li>
+				<li data-dojo-type="dojox.mobile.ListItem" label="5303" rightText="<span style='font-size: 16px;'>Englewood Pre-Rookie</span>" data-dojo-props="moveTo:'homematches5303'"></li>
 			</ul>
 		</div>
 		

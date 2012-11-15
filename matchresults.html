@@ -110,7 +110,35 @@
 								var rowCount = resultsTable.rows.length;
 								var row = resultsTable.insertRow(rowCount);
 								var cell;
-								row.insertCell(0).innerHTML = matchResults[i].matchNumber;
+								if (matchResults[i].type === 'E') {
+									var elimMatch = '';
+									switch(matchResults[i].matchNumber) {
+										case 1: elimMatch = 'QF 1-1'; break;
+										case 2: elimMatch = 'QF 2-1'; break;
+										case 3: elimMatch = 'QF 3-1'; break;
+										case 4: elimMatch = 'QF 4-1'; break;
+										case 5: elimMatch = 'QF 1-2'; break;
+										case 6: elimMatch = 'QF 2-2'; break;
+										case 7: elimMatch = 'QF 3-2'; break;
+										case 8: elimMatch = 'QF 4-2'; break;
+										case 9: elimMatch = 'QF 1-3'; break;
+										case 10: elimMatch = 'QF 2-3'; break;
+										case 10: elimMatch = 'QF 3-3'; break;
+										case 12: elimMatch = 'QF 4-3'; break;
+										case 13: elimMatch = 'SF 1-1'; break;
+										case 14: elimMatch = 'SF 2-1'; break;
+										case 15: elimMatch = 'SF 1-2'; break;
+										case 16: elimMatch = 'SF 2-2'; break;
+										case 17: elimMatch = 'SF 1-3'; break;
+										case 18: elimMatch = 'SF 2-3'; break;
+										case 19: elimMatch = 'F 1'; break;
+										case 20: elimMatch = 'F 2'; break;
+										case 21: elimMatch = 'F 3'; break;
+									}
+									row.insertCell(0).innerHTML = elimMatch;
+								} else {
+									row.insertCell(0).innerHTML = matchResults[i].matchNumber;
+								}
 								cell = row.insertCell(1);
 								cell.innerHTML = matchResults[i].red[0];
 								cell.className = 'redTeam';

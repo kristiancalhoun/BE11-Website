@@ -268,11 +268,39 @@ require(
 						
 							// Add match results to match result view
 							var match = matchResults[(matchResults.length - 1) - i];	// Most recent first
+							var matchNumber = '';
+							if (match.type === 'E') {
+								switch(match.matchNumber) {
+									case 1: matchNumber = 'QF 1-1'; break;
+									case 2: matchNumber = 'QF 2-1'; break;
+									case 3: matchNumber = 'QF 3-1'; break;
+									case 4: matchNumber = 'QF 4-1'; break;
+									case 5: matchNumber = 'QF 1-2'; break;
+									case 6: matchNumber = 'QF 2-2'; break;
+									case 7: matchNumber = 'QF 3-2'; break;
+									case 8: matchNumber = 'QF 4-2'; break;
+									case 9: matchNumber = 'QF 1-3'; break;
+									case 10: matchNumber = 'QF 2-3'; break;
+									case 10: matchNumber = 'QF 3-3'; break;
+									case 12: matchNumber = 'QF 4-3'; break;
+									case 13: matchNumber = 'SF 1-1'; break;
+									case 14: matchNumber = 'SF 2-1'; break;
+									case 15: matchNumber = 'SF 1-2'; break;
+									case 16: matchNumber = 'SF 2-2'; break;
+									case 17: matchNumber = 'SF 1-3'; break;
+									case 18: matchNumber = 'SF 2-3'; break;
+									case 19: matchNumber = 'F 1'; break;
+									case 20: matchNumber = 'F 2'; break;
+									case 21: matchNumber = 'F 3'; break;
+								}
+							} else {
+								matchNumber = match.type + match.matchNumber;
+							}
 							var matchResultWidget = registry.byId("matchResultsList");
 							var matchWidget = new dojox.mobile.ListItem({
 								icon: "",
 								moveTo: "",
-								label: match.type + '' + match.matchNumber,
+								label: matchNumber,
 								rightText: 
 									"<span class='matchResultSpan'>"+
 									"<table class='alliances'><tr class='redAlliance'><td>" + match.red[0] + "</td><td>" + match.red[1] + "</td><td>" + match.red[2] + "</td></tr>" +
@@ -299,10 +327,39 @@ require(
 							// Add match results to match result view
 							var match = matchResults[(matchResults.length - 1) - i];	// Most recent first
 							var matchResultWidget = registry.byId("matchResultsList");
+							var matchNumber = '';
+							if (match.type === 'E') {
+								switch(match.matchNumber) {
+									case 1: matchNumber = 'QF 1-1'; break;
+									case 2: matchNumber = 'QF 2-1'; break;
+									case 3: matchNumber = 'QF 3-1'; break;
+									case 4: matchNumber = 'QF 4-1'; break;
+									case 5: matchNumber = 'QF 1-2'; break;
+									case 6: matchNumber = 'QF 2-2'; break;
+									case 7: matchNumber = 'QF 3-2'; break;
+									case 8: matchNumber = 'QF 4-2'; break;
+									case 9: matchNumber = 'QF 1-3'; break;
+									case 10: matchNumber = 'QF 2-3'; break;
+									case 10: matchNumber = 'QF 3-3'; break;
+									case 12: matchNumber = 'QF 4-3'; break;
+									case 13: matchNumber = 'SF 1-1'; break;
+									case 14: matchNumber = 'SF 2-1'; break;
+									case 15: matchNumber = 'SF 1-2'; break;
+									case 16: matchNumber = 'SF 2-2'; break;
+									case 17: matchNumber = 'SF 1-3'; break;
+									case 18: matchNumber = 'SF 2-3'; break;
+									case 19: matchNumber = 'F 1'; break;
+									case 20: matchNumber = 'F 2'; break;
+									case 21: matchNumber = 'F 3'; break;
+								}
+							} else {
+								matchNumber = match.type + match.matchNumber;
+							}
+							
 							var matchWidget = new dojox.mobile.ListItem({
 								icon: "",
 								moveTo: "",
-								label: match.type + '' + match.matchNumber,
+								label: matchNumber,
 								rightText: 
 									"<span class='matchResultSpan'>"+
 									"<table class='alliances'><tr class='redAlliance'><td>" + match.red[0] + "</td><td>" + match.red[1] + "</td><td>" + match.red[2] + "</td></tr>" +

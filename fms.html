@@ -22,26 +22,52 @@
 	</script>
 	
 	<script type="text/javascript">
-		$("document").ready( function() {						  
+		var teams = ["25","41","103","224", "293", "303", "341", "369", "371",
+		"613", "806", "869", "888", "1075", "1089", "1143", "1279", "1302",
+		"1626", "1640", "1923", "2458", "2495", "2554", "2590", "2606", "2607",
+		"3637", "4067", "5303"];
+	
+		$("document").ready( function() {	
+			
+			$("#MC").val('');
+			
+			$("#red1").val('');
+			$("#red2").val('');
+			$("#red3").val('');
+				
+			$("#blue1").val('');
+			$("#blue2").val('');
+			$("#blue3").val('');
+			
+			$("#RHS").val('');
+			$("#RTS").val('');
+			$("#RB").val('');
+			$("#RFP").val('');
+			
+			$("#BHS").val('');
+			$("#BTS").val('');
+			$("#BB").val('');
+			$("#BFP").val('');
+							  
 			$("#tweetScoreForm").submit( function() {
 				// TODO: Error checking
 				
 				var TY = $("#TY").val();
 				var MC = $("#MC").val();
 				
-				var RHS = $("#RHS").val();
-				var BHS = $("#BHS").val();
+				var RHS = $("#RHS").val() || 0;
+				var BHS = $("#BHS").val() || 0;
 				
-				var RTS = $("#RTS").val();
-				var BTS = $("#BTS").val();
+				var RTS = $("#RTS").val() || 0;
+				var BTS = $("#BTS").val() || 0;
 				
-				var RB = $("#RB").val();
-				var BB = $("#BB").val();
+				var RB = $("#RB").val() || 0;
+				var BB = $("#BB").val() || 0;
 				
-				var RFP = $("#RFP").val();
-				var BFP = $("#BFP").val();
+				var RFP = $("#RFP").val() || 0;
+				var BFP = $("#BFP").val() || 0;
 				
-				var CP = $("#CP").val();
+				var CP = $("#CP").val() || 0;
 				
 				var RF = parseInt(RHS) + parseInt(RTS) + parseInt(RB) + parseInt(RFP); 
 				var BF = parseInt(BHS) + parseInt(BTS) + parseInt(BB) + parseInt(BFP);
@@ -53,6 +79,20 @@
 				var b1 = $("#blue1").val();
 				var b2 = $("#blue2").val();
 				var b3 = $("#blue3").val();
+				
+				function validateTeam(team) {
+				    var r;
+					if (teams.indexOf(team) === -1) {
+						return false;
+					}
+					return true;
+				}
+				if(!validateTeam(r1) || !validateTeam(r2) || !validateTeam(r3) || 
+				   !validateTeam(b1) || !validateTeam(b2) || !validateTeam(b3)) {
+
+					alert("Invalid team entered.");
+					return false;
+				}
 				
 				var tweetText = '#FRCBE TY ' + TY + ' MC ' + MC + ' ';
 				tweetText += 'RF ' + RF + ' BF ' + BF + ' ';
@@ -74,7 +114,7 @@
 					data: "tweetText=" + tweetText,
 					success: function( msg ) {
 						console.log('Tweeted and received result status: ' + msg);
-						$("#ajaxresult").html( msg );
+						$("#ajaxresult").html( msg  +'</br>If the response code is 200 - great success! Refresh the page to enter the data for the next round.');
 						$("#ajaxresult").show();
 					}	
 				});
@@ -128,6 +168,7 @@
 					</select> 
 				<br/></div>
 				<div class="row centered">Match Number: <input id="MC" type="text"/> <br/></div>
+				
 				<div id="blueScoreInfo">
 					<div class="row">Team 1: <input id="blue1" type="text"/> <br/></div>
 					<div class="row">Team 2: <input id="blue2" type="text"/> <br/></div>
