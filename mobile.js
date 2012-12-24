@@ -63,7 +63,7 @@ require(
 				this.matchRecords = [];
 			};
 			var teams = [];
-			var matchesPerTeam = 5;
+			var matchesPerTeam = 6;
 			
 			/**
 			 * Return the Team with the specified number from the list.
